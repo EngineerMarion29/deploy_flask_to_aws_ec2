@@ -1,0 +1,13 @@
+
+vi /etc/systemd/system/gunicorn.service
+[Unit]
+Description=Gunicorn daemon to serve my flaskapp 
+After=network.target
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/flaskapp_emailautom
+ExecStart=/root/flaskapp_emailautom/bin/gunicorn --bind unix:main.sock -m 666 main:app
+[Install]
+WantedBy=multi-user.target
+      
